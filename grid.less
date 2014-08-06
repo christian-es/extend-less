@@ -1,0 +1,79 @@
+// ==========================================================
+
+// Grid
+// Version: 1.0
+// Christian Escalante
+
+// ==========================================================
+
+
+// Grid para resolución de 320px
+.width-col-320(@cantidad){
+	@columnas       : 8;
+	@ancho_margen   : 12;
+	@ancho_columnas : 27;
+	@ancho_extremos : 10;
+
+	.width-col-x(@cantidad);
+}
+
+// Grid para resolución de 480px
+.width-col-480(@cantidad){
+	@columnas       : 8;
+	@ancho_margen   : 8;
+	@ancho_columnas : 51;
+	@ancho_extremos : 8;
+
+	.width-col-x(@cantidad);
+}
+
+// Grid para resolución de 768px
+.width-col-768(@cantidad){
+	@columnas       : 12;
+	@ancho_margen   : 20;
+	@ancho_columnas : 44;
+	@ancho_extremos : 10;
+
+	.width-col-x(@cantidad);
+}
+
+// Grid para resolución de 1024px
+.width-col-1024(@cantidad){
+	@columnas       : 12;
+	@ancho_margen   : 30;
+	@ancho_columnas : 54;
+	@ancho_extremos : 12;
+
+	.width-col-x(@cantidad);
+}
+
+// Grid para resolución de 1280px
+.width-col-1280(@cantidad){
+	@columnas       : 16;
+	@ancho_margen   : 30;
+	@ancho_columnas : 48;
+	@ancho_extremos : 15;
+
+	.width-col-x(@cantidad);
+}
+
+// Grid para resolución de 1440px
+.width-col-1440(@cantidad){
+	@columnas       : 16;
+	@ancho_margen   : 30;
+	@ancho_columnas : 58;
+	@ancho_extremos : 15;
+
+	.width-col-x(@cantidad);
+}
+
+// Aqui se realiza el cálculo del valor de 'width'
+.width-col-x(@cantidad){
+	@ancho_fixed : (@columnas * @ancho_columnas) + ((@columnas - 1) * @ancho_margen) + (2 * @ancho_extremos) * 1px;
+
+	@ancho_total : @ancho_fixed; // tambien puede ser 100%;
+	
+	width: @ancho_total * ((((@ancho_columnas + @ancho_margen) * @cantidad) - @ancho_margen) / @ancho_fixed );
+	
+	margin: 0 (@ancho_total * ((@ancho_margen * 0.5) / @ancho_fixed));
+}
